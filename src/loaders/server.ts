@@ -1,15 +1,17 @@
-import app from './expressLoader'
-import { conn } from './db';
+import expressLoader from './expressLoader';
+import dbLoader from './dbLoader';
 
 const PORT = process.env.PORT || 3001;
 
+const app = expressLoader();
+
 // Sincronizar con la base de datos antes de iniciar el servidor
-conn.sync({ force: false })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Servidor iniciado en el puerto ${PORT}`);
+dbLoader.conn.sync({ force: false })
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Servidor iniciado en el puerto ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error("Error al sincronizar la base de datos:", error);
     });
-  })
-  .catch((error) => {
-    console.error("Error al sincronizar la base de datos:", error);
-  });

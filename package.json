@@ -6,7 +6,8 @@
     "@types/node": "^20.11.30",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.6",
-    "typescript": "^5.4.3"
+    "dotenv": "^16.4.5",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,5 +16,9 @@
     "sequelize": "^6.37.2",
     "swagger": "^0.7.5",
     "swagger-ui-express": "^5.0.0"
+  },
+  "scripts": {
+    "start": "npm run build && node ./src/loaders/server.js",
+    "build": "tsc"
   }
 }

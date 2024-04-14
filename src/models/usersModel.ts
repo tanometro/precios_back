@@ -45,10 +45,13 @@ export default (sequelize: Sequelize) => {
 
     //Relations
     User.hasMany(purchasesModel(sequelize), {
-        foreignKey: 'purchaseID',
+        foreignKey: 'userID',
         onDelete: 'CASCADE',
     });
-    // User.hasMany(businessModel(sequelize));
+    User.hasMany(businessModel(sequelize), {
+        foreignKey: 'userID',
+        onDelete: 'CASCADE'
+    });
 
     return User;
 }

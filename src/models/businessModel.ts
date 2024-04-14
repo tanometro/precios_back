@@ -24,13 +24,13 @@ export default (sequelize: Sequelize) => {
     //Relations
     Business.belongsTo(usersModel(sequelize), {
         foreignKey: 'userID',
-        onDelete: 'CASCADE',
     });
     Business.hasMany(productsModel(sequelize), {
-        foreignKey: 'productsID',
+        foreignKey: 'businessID',
     });
     Business.hasMany(branchModel(sequelize), {
         foreignKey: 'branchID',
+        onDelete: 'CASCADE',
     })
 
     return Business;

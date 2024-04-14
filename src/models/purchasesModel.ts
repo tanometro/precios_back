@@ -1,4 +1,6 @@
 import { DataTypes, Sequelize } from "sequelize";
+import usersModel from "./usersModel";
+import productsModel from "./productsModel";
 
 export default (sequelize: Sequelize) => {
     const Purchase = sequelize.define('Purchase', {
@@ -15,6 +17,11 @@ export default (sequelize: Sequelize) => {
     })
 
     //Relations 
-    
+    Purchase.belongsTo(usersModel(sequelize), {
+        foreignKey: 'purchaseID',
+    });
+    Purchase.hasMany(productsModel(sequelize), {
+        foreignKey: 'purchaseID'
+    });
     return Purchase;
 }

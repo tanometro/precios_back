@@ -30,8 +30,7 @@ export default (sequelize: Sequelize) => {
     
     //Relations
     Branch.belongsTo(businessModel(sequelize), {
-        foreignKey: 'businessID',
-        onDelete: 'CASCADE',
+        foreignKey: 'branchID',
     });
     Branch.hasMany(productsModel(sequelize),{
         foreignKey: 'productID',

@@ -3,7 +3,7 @@ import expressLoader from './src/loaders/expressLoader';
 import api from './src/api/index';
 
 const app = express();
-expressLoader(app);
+expressLoader();
 
 app.use('/api', api);
 
